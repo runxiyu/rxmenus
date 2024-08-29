@@ -10,4 +10,6 @@ userspace
 EOF
 )"
 
-setgov $t
+r="$(setgov $t 2>&1)"
+
+notify-send "cpufreq $t" "$r"

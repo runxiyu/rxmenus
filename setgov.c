@@ -17,18 +17,27 @@ const char *acceptable_governors[] = {
 	"userspace",
 };
 
-int elemcmp(const void *a, const void *b)
+int
+elemcmp(const void *a, const void *b)
 {
 	return strcmp((char *)a, *(const char **)b);
 }
 
-int main(int argc, char **argv)
+int
+main(int argc, char **argv)
 {
 	if (argc != 2) {
 		dprintf(2, "%s: missing governor argument\n", argv[0]);
 		return 1;
 	}
-	if (bsearch(argv[1], acceptable_governors, sizeof(acceptable_governors)/sizeof(*acceptable_governors), sizeof(*acceptable_governors), elemcmp) == NULL) {
+
+	if (bsearch(
+		argv[1],
+		acceptable_governors,
+		sizeof(acceptable_governors)/sizeof(*acceptable_governors),
+		sizeof(*acceptable_governors),
+		elemcmp
+	) == NULL) {
 		dprintf(2, "%s: invalid governor\n", argv[0]);
 		return 5;
 	}
@@ -48,6 +57,7 @@ int main(int argc, char **argv)
 			return 4;
 		}
 	};
+
 	for (size_t i = 0; i < pglob.gl_pathc; ++i) {
 		int fd = open(pglob.gl_pathv[i], O_WRONLY);
 		if (fd == -1) {
@@ -69,5 +79,6 @@ int main(int argc, char **argv)
 		}
 	}
 	globfree(&pglob);
+
 	return 0;
 }

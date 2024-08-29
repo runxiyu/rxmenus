@@ -3,4 +3,4 @@
 rxmenu-$(dmenu << EOF
 cpufreq
 EOF
-$)
+)
