@@ -1,0 +1,3 @@
+#!/bin/sh
+
+fuzzel --dmenu0 -p "$1> "

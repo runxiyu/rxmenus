@@ -2,7 +2,7 @@
 
 # NOTE: user must be able to use rfkill
 
-t="$(dmenu rfkill << EOF
+t="$(promptmenu rfkill << EOF
 block
 unblock
 EOF

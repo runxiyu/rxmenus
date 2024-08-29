@@ -2,7 +2,7 @@
 
 # NOTE: telinit must be setuid or otherwise usable by the user
 
-t="$(dmenu telinit << EOF
+t="$(promptmenu telinit << EOF
 0
 2
 3
