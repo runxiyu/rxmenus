@@ -1,0 +1,50 @@
+#!/bin/sh
+
+lf="$(printf '\n')"
+
+t="$(dmenu profile << EOF
+mini
+save
+cons
+norm
+perf
+EOF
+)"
+
+f() {
+	if [ "$t" = "mini" ]; then
+		telinit 2
+		rfkill block 0
+		rfkill block 1
+		exit 0
+	elif [ "$t" = "save" ]; then
+		rfkill unblock 0
+		rfkill unblock 1
+		telinit 3
+		setgov powersave
+		exit 0
+	elif [ "$t" = "cons" ]; then
+		rfkill unblock 0
+		rfkill unblock 1
+		telinit 3
+		setgov conservative
+		exit 0
+	elif [ "$t" = "norm" ]; then
+		rfkill unblock 0
+		rfkill unblock 1
+		telinit 3
+		setgov schedutil
+		exit 0
+	elif [ "$t" = "perf" ]; then
+		rfkill unblock 0
+		rfkill unblock 1
+		telinit 3
+		setgov performance
+		exit 0
+	else
+		notify-send "profile $t" "not a valid profile"
+		exit 1
+	fi
+}
+
+log="$(f 2>&1)" && notify-send "profile $t" "$log"

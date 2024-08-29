@@ -1,6 +1,7 @@
 #!/bin/sh
 
 rxmenu-$(dmenu rxmenu <<EOF
+profile
 cpufreq
 telinit
 rfkill
