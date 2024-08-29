@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rxmenu-$(dmenu << EOF
+cpufreq
+EOF
+$)

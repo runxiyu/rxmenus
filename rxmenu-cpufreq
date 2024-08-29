@@ -1,0 +1,13 @@
+#!/bin/sh
+
+t="$(dmenu << EOF
+powersave
+schedutil
+conservative
+performance
+ondemand
+userspace
+EOF
+)"
+
+setgov $t
