@@ -1,6 +1,6 @@
 #!/bin/sh
 
-t="$(dmenu << EOF
+t="$(dmenu cpufreq << EOF
 powersave
 schedutil
 conservative

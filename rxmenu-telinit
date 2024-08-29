@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# NOTE: telinit must be setuid or otherwise usable by the user
+
+t="$(dmenu telinit << EOF
+0
+2
+3
+6
+EOF
+)"
+notify-send "telinit $t" "$(telinit "$t" 2>&1)"

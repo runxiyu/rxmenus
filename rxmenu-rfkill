@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# NOTE: user must be able to use rfkill
+
+t="$(dmenu rfkill << EOF
+block
+unblock
+EOF
+)"
+notify-send "rfkill $t 0" "$(rfkill "$t" 0 2>&1)"
+notify-send "rfkill $t 1" "$(rfkill "$t" 1 2>&1)"

@@ -1,6 +1,8 @@
 #!/bin/sh
 
-rxmenu-$(dmenu << EOF
+rxmenu-$(dmenu rxmenu <<EOF
 cpufreq
+telinit
+rfkill
 EOF
 )
