@@ -1,0 +1,9 @@
+#!/bin/sh
+
+t="$(promptmenu backlight << EOF
+EOF
+)"
+
+r="$(setbkl $t 2>&1)"
+
+notify-send "setbkl $t" "$r"

@@ -3,6 +3,7 @@
 rxmenu-$(promptmenu rxmenu <<EOF
 profile
 cpufreq
+backlight
 telinit
 rfkill
 EOF
